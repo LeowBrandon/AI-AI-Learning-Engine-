@@ -1,0 +1,165 @@
+/* ============================================================
+   reset.css —— CSS 变量 + 全局重置
+   颜色一律走变量，改主题只动这一处。
+   ============================================================ */
+
+:root {
+  /* ---------- 背景层 ---------- */
+  --bg-base:      #0d0d10;   /* 页面底色 */
+  --bg-panel:     #14141a;   /* 面板 */
+  --bg-elevated:  #1b1b23;   /* 悬浮层 / 输入框 */
+  --bg-hover:     #22222c;   /* hover 态 */
+
+  /* ---------- 描边 ---------- */
+  --border:        #2a2a35;
+  --border-strong: #3a3a48;
+
+  /* ---------- 金色（点缀，不做大面积填充） ---------- */
+  --gold:        #d9b45b;
+  --gold-bright: #f0cd7a;
+  --gold-dim:    #8a7233;
+  --gold-a12:    rgba(217, 180, 91, 0.12);
+  --gold-a24:    rgba(217, 180, 91, 0.24);
+
+  /* ---------- 文字 ---------- */
+  --text-1: #ece9e2;   /* 主文字 */
+  --text-2: #a9a49a;   /* 次要文字 */
+  --text-3: #6f6b63;   /* 弱化 / 占位 */
+
+  /* ---------- 聊天气泡 ---------- */
+  --bubble-user-bg:   #ffffff;   /* 用户消息：白底 */
+  --bubble-user-text: #14141a;   /* 用户消息：黑字 */
+
+  /* ---------- 状态 ---------- */
+  --ok:   #43c463;   /* 后台已连接 / 已掌握 */
+  --warn: #e08a4a;   /* 待加强 */
+  --err:  #e5534b;   /* 后台断开 / 薄弱 */
+
+  /* ---------- 尺寸 ---------- */
+  --radius:    10px;
+  --radius-sm: 6px;
+  --radius-pill: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  --topbar-h:    56px;
+  --content-max: 1080px;
+
+  /* ---------- 字体 ---------- */
+  --font-sans: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+}
+
+/* ---------- 重置 ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-base);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd, pre {
+  margin: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* ---------- 滚动条 ---------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border: 3px solid var(--bg-base);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dim);
+}
+
+/* ---------- 选中 / 焦点 ---------- */
+
+::selection {
+  background: var(--gold-a24);
+  color: var(--gold-bright);
+}
+
+:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* 占位符颜色 */
+::placeholder {
+  color: var(--text-3);
+}

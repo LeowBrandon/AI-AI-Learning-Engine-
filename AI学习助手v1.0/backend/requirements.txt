@@ -1,0 +1,15 @@
+Flask>=3.0
+Flask-SQLAlchemy>=3.1
+SQLAlchemy>=2.0
+requests>=2.31
+python-dotenv>=1.0
+
+# PDF 文字抽取。纯 Python，不带编译好的 DLL。
+# .docx / .pptx 用标准库的 zipfile + ElementTree 解析，不引 python-docx / python-pptx ——
+# 那两个库依赖 lxml，而 lxml 的 DLL 在路径较长的项目里会加载失败
+# （Windows 260 字符上限，实测项目路径长时会报 DLL load failed）。
+#
+# 同理也不装 charset-normalizer / chardet：它们带编译扩展，实测路径 271 字符加载不了。
+# 缺了它们 requests 只会少一层编码探测（我们只读 JSON，用不上），
+# 代价是启动时打一条 RequestsDependencyWarning，已在 llm.py 里静默。
+pypdf>=4.0

@@ -1,0 +1,303 @@
+/* ============================================================
+   components.css —— 可复用组件：导航 / 状态点 / 按钮 / 面板 /
+                     统计卡 / 表单 / 空状态 / 提示条
+   ============================================================ */
+
+/* ---------- 导航 Tab ---------- */
+
+.nav-tab {
+  position: relative;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--text-2);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.nav-tab:hover {
+  color: var(--text-1);
+  background: var(--bg-hover);
+}
+
+.nav-tab.is-active {
+  color: var(--gold-bright);
+}
+
+.nav-tab.is-active::after {
+  content: "";
+  position: absolute;
+  left: var(--space-4);
+  right: var(--space-4);
+  bottom: -1px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--gold);
+}
+
+/* ---------- 后台连接状态点 ---------- */
+
+.status-dot {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--text-3);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.status-dot.is-online {
+  background: var(--ok);
+  box-shadow: 0 0 8px rgba(67, 196, 99, 0.7);
+}
+
+.status-dot.is-offline {
+  background: var(--err);
+  box-shadow: 0 0 8px rgba(229, 83, 75, 0.6);
+}
+
+/* ---------- 按钮 ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-size: 13px;
+  line-height: 1.4;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--gold);
+  color: #1a1508;
+  font-weight: 600;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--gold-bright);
+}
+
+.btn--ghost {
+  border-color: var(--border-strong);
+  color: var(--text-2);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+}
+
+.btn--sm {
+  padding: 2px var(--space-3);
+  font-size: 12px;
+}
+
+/* ---------- 面板 ---------- */
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+}
+
+/* 内容自带内边距时用（如列表行），面板自身不再留白 */
+.panel--flush {
+  padding: 0;
+}
+
+.panel--flush .panel__head {
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  margin-bottom: 0;
+}
+
+.panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.panel__title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.panel__hint {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+/* ---------- 统计卡 ---------- */
+
+.stat {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.stat__label {
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.stat__value {
+  margin-top: var(--space-1);
+  font-size: 24px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold-bright);
+}
+
+.stat__value--muted {
+  color: var(--text-3);
+}
+
+.stat__value--ok {
+  color: var(--ok);
+}
+
+.stat__value--err {
+  color: var(--err);
+}
+
+/* ---------- 表单 ---------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field__label {
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: var(--gold-dim);
+}
+
+.textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.input:disabled,
+.textarea:disabled,
+.select:disabled {
+  color: var(--text-3);
+  background: var(--bg-panel);
+}
+
+.select {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* ---------- 空状态 ---------- */
+
+.empty {
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+/* ---------- 提示条 ---------- */
+
+.notice {
+  padding: var(--space-3) var(--space-4);
+  border-left: 2px solid var(--gold-dim);
+  background: var(--gold-a12);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+/* ---------- 生成中 / 加载中（测评页、报告页共用） ---------- */
+
+.working {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--gold);
+}
+
+/* display:flex 会压过 [hidden] 的默认 display:none，必须显式声明 */
+.working[hidden] {
+  display: none;
+}
+
+/* ---------- 浮动提示（Toast） ---------- */
+
+.toast-host {
+  position: fixed;
+  top: calc(var(--topbar-h) + var(--space-3));
+  right: var(--space-5);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  pointer-events: none;
+}
+
+.toast {
+  max-width: 360px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-1);
+  animation: toast-in 0.2s ease;
+}
+
+.toast--ok {
+  border-color: var(--ok);
+  color: var(--ok);
+}
+
+.toast--err {
+  border-color: var(--err);
+  color: var(--err);
+}
+
+.toast.is-leaving {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
